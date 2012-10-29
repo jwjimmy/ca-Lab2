@@ -8,14 +8,14 @@ module alu (busA, busB, ctrl, out, zero, ovf, carry);
 
 	always @ (busA, busB) begin
 		case (ctrl)
-			3'b000: assign out = busA + busB;
-			3'b001: assign out = busA - busB;
-			3'b010: assign out = busA ^ busB;
-			3'b011: assign out = (busA < busB);
-			3'b100: assign out = busA*busB;
-			3'b101: assign out = busA << busB;
-			3'b110: assign out = busA >> busB;
-			3'b111: assign out = busA >>> busB;
+			3'b000: #320 assign out = busA + busB;
+			3'b001: #340 assign out = busA - busB;
+			3'b010: #110 assign out = busA ^ busB;
+			3'b011: #120 assign out = (busA < busB);
+			3'b100: #10000 assign out = busA*busB;
+			3'b101: #150 assign out = busA << busB;
+			3'b110: #150 assign out = busA >> busB;
+			3'b111: #250 assign out = busA >>> busB;
 		endcase
 	end
 endmodule
