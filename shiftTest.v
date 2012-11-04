@@ -1,9 +1,11 @@
-module test_sign;
+module test_shift;
     reg [31:0] TinA, TinB;
     wire [31:0] Tout;
 
     initial
     begin
+        $dumpfile("testsign.vcd");
+        $dumpvars(0,test_sign);
         $monitor($time, , Tout, , TinA, ,TinB);
         TinA = 32'b1;
 		TinB = 32'd2;
