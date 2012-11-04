@@ -5,7 +5,7 @@ module test_shift;
     initial
     begin
         $dumpfile("testsign.vcd");
-        $dumpvars(0,test_sign);
+        $dumpvars(0,test_shift);
         $monitor($time, , Tout, , TinA, ,TinB);
         TinA = 32'b1;
 		TinB = 32'd2;
