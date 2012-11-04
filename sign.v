@@ -1,6 +1,10 @@
 module sign(out,in);
     output[31:0] out;
     input[31:0] in;
+	reg out;
 
-    assign out = ~in + 1;
+	always @ (in)
+	begin
+    	out = ~in + 1;
+	end
 endmodule

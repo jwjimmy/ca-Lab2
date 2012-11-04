@@ -1,6 +1,7 @@
 module test_sign;
     reg [31:0] Tin;
-    reg [31:0] Tout;
+    wire [31:0] Tout;
+
     initial
     begin
         Tin = 32'b1000;
