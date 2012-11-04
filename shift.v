@@ -1,9 +1,7 @@
-module shift(out, inA, inB);
-
-    output[31:0] out;
-    input[31:0] inA, inB;
-
-	reg out; // make 'out' assignable
+module shift(
+	output reg[31:0] out,
+	input [31:0] inA, inB
+	);
 
 	reg[31:0] temp; // create 32b var 'temp'
 
