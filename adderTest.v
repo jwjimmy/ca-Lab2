@@ -7,6 +7,8 @@ module test_adder;
 	initial
 	begin
 		$monitor($time, , Tout, , Tcout, , Ta , ,Tb);
+		$dumpfile("testadder.vcd");
+		$dumpvars(0,test_adder);
 
 		Ta = 32'b1000;
 		Tb = 32'b1001;
