@@ -11,7 +11,7 @@ This module was finally constructed out of a series of muxes and wires, providin
 
 
 
-module shift(
+module shiftLeft(
 	output reg [31:0] out,
 	input [31:0] inA, inB
 	);

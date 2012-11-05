@@ -1,11 +1,11 @@
-module test_shift;
+module shiftLeftTest;
 	reg [31:0] TinA, TinB;
 	wire [31:0] Tout;
 
 	initial
 	begin
-		$dumpfile("testshift.vcd");
-		$dumpvars(0,test_shift);
+		$dumpfile("shiftLeftTest.vcd");
+		$dumpvars(0,shiftLeftTest);
 		$monitor($time, , Tout, , TinA, ,TinB);
 		TinA = 32'b1;
 		TinB = 32'd2;
@@ -15,5 +15,5 @@ module test_shift;
 		TinB = 32'd8;
 		#100;
 	end
-	shift tester (Tout,TinA, TinB);
+	shiftLeft shiftLeftTester (Tout,TinA, TinB);
 endmodule	
