@@ -2,7 +2,8 @@ module test_adder;
 	
 	//initialize input and output variables
 	reg[31:0] Ta, Tb;
-	wire[31:0] Tout,Tcout;
+	wire[31:0] Tout;
+	wire Tcout;
 
 	initial
 	begin
