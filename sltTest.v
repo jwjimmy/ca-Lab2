@@ -10,22 +10,16 @@ module sltTest;
 		$dumpfile("sltTest.vcd");
 		$dumpvars(0,sltTest);
 
-		Ta = 32'b1000;
-		Tb = 32'b1001;
+		Ta = 1; 
+		Tb = 2;
 		#1000;
-		Ta = 32'b1011;
-		Tb = 32'b0001;
+		Ta = 4;
+		Tb = 3;
 		#1000;
-		Ta = 32'b1011;
-		Tb = 32'b1111;
-		#1000;
-		Ta = 32'b11011;
-		Tb = 32'b011;
-		#1000;
-		Ta = 32'b1011;
-		Tb = 32'b10000000001;
+		Ta = 5;
+		Tb = 6;
 		#1000;
 	end
 
-	slt tester (Tout, Ta, Tb);
+	slt sltTester (Tout, Ta, Tb);
 endmodule
