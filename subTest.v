@@ -2,11 +2,11 @@ module test_sub;
 	
 	//initialize input and output variables
 	reg[31:0] Ta, Tb;
-	wire[31:0] Tout,Tcout;
+	wire[31:0] Tout;
 
 	initial
 	begin
-		$monitor($time, , Tout, , Tcout, , Ta , ,Tb);
+		$monitor($time, , Tout, , Ta, , Tb);
 		$dumpfile("testsub.vcd");
 		$dumpvars(0,test_sub);
 
@@ -27,5 +27,5 @@ module test_sub;
 		#1000;
 	end
 
-	Sub32Bit tester (Tout, Tcout, Ta, Tb);
+	Sub32Bit tester (Tout, Ta, Tb);
 endmodule
