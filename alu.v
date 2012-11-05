@@ -5,26 +5,27 @@ module alu (
 	output zero, ovf, carry
 	);
 	wire carryA;
-	wire [31:0] outSR, aSR, bSR;
-	wire [31:0] outSL, aSL, bSL;
-	wire [31:0] outSLT, aSLT, bSLT;
-	wire [31:0] outA, aA, bA;
-	wire [31:0] outS, aS, bS;
+	wire [31:0] outSR;
+	wire [31:0] outSL;
+	wire [31:0] outSLT;
+	wire [31:0] outA;
+	wire [31:0] outS;
 
-shiftRight shiftRighter (outSR, aSR, bSR);
-shiftLeft shiftLefter (outSL, aSL, bSL);
-slt slter (outSLT, aSLT, bSLT);
-Adder32Bit adder (outA, carryA, aA, bA);
-Sub32Bit subber (outS, aS, bS);
+shiftRight shiftRighter (outSR, a, b);
+shiftLeft shiftLefter (outSL, a, b);
+slt slter (outSLT, a, b);
+Adder32Bit adder (outA, carry, a, b);
+Sub32Bit subber (outS, a, b);
+
 
 	always @ (a,b) begin
 		case (ctrl)
-			3'b000: adder (out, carry, a, b); // add
-			3'b001: subber (out, a, b); // subtract
+			3'b000: assign out = outA; // add
+			3'b001: assign out = outS; // subtract
 			3'b010: #20 out = a ^ b; // xor - built via 32 parallel bitwise two-input xor gates
-			3'b011: slter (out, a, b); // set if less than
-			3'b101: shiftLefter (out, a, b); // <<
-			3'b110: shiftRighter (out, a, b); // >>
+			3'b011: assign out = outSLT; // set if less than
+			3'b101: assign out = outSL; // <<
+			3'b110: assign out = outSR; // >>
 			default: assign out = 32'b0;
 		endcase
 	end

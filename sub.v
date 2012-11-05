@@ -6,6 +6,4 @@ module Sub32Bit(
 	wire [31:0] twosComp;
 	Sign32Bit SubSigner(twosComp, b);
 	Adder32Bit SubAdder(out, cout, a, twosComp);
-
-
 endmodule
