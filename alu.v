@@ -1,18 +1,18 @@
 module alu (
-	input [31:0] busA, busB, 
+	input [31:0] a, b, 
 	input [3:0] ctrl, 
 	output reg [31:0] out, 
 	output zero, ovf, carry
 	);
 
 
-shiftRight shiftRighter (out, a, b);
-shiftLeft shiftLefter (out, a, b);
-slt slter (out, a, b);
-Adder32Bit adder (out, carry, a, b);
-Sub32Bit subber (out, a, b);
+shiftRight shiftRighter (outSR, aSR, bSR);
+shiftLeft shiftLefter (outSL, aSL, bSL);
+slt slter (outSLT, aSLT, bSLT);
+Adder32Bit adder (outA, carryA, aA, bA);
+Sub32Bit subber (outS, aS, bS);
 
-	always @ (busA, busB) begin
+	always @ (a,b) begin
 		case (ctrl)
 			3'b000: adder (out, carry, a, b); // add
 			3'b001: subber (out, a, b); // subtract
