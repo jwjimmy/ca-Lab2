@@ -1,3 +1,9 @@
+/*
+This module is constructed out of a single 32b wide shift register with a counter (fed with inB) as a clock generator.
+
+While slower than a mux/mux shifter, this is considerably smaller, and much easier to implement.
+*/
+
 module shift(
 	output reg[31:0] out,
 	input [31:0] inA, inB
