@@ -19,6 +19,12 @@ module test_sub;
 		Ta = 32'b1011;
 		Tb = 32'b1111;
 		#1000;
+		Ta = 32'b11011;
+		Tb = 32'b011;
+		#1000;
+		Ta = 32'b1011;
+		Tb = 32'b10000000001;
+		#1000;
 	end
 
 	Sub32Bit tester (Tout, Tcout, Ta, Tb);

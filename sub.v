@@ -5,8 +5,8 @@ module Sub32Bit(
 	input [31:0] b
 	);
 	wire [31:0] twosComp;
-	sign(twosComp,b);
-	Adder32Bit SubAdder(out,cout,a,twosComp)
+	Sign32Bit SubSigner(twosComp,b);
+	Adder32Bit SubAdder(out,cout,a,twosComp);
 
 
 endmodule
