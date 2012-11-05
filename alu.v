@@ -4,13 +4,14 @@ module alu (
 	output reg [31:0] out, 
 	output zero, ovf, carry
 	);
+	wire [31:0] out0, a0, b0;
+	wire carry0;
 
-
-shiftRight shiftRighter (outSR, aSR, bSR);
-shiftLeft shiftLefter (outSL, aSL, bSL);
-slt slter (outSLT, aSLT, bSLT);
-Adder32Bit adder (outA, carryA, aA, bA);
-Sub32Bit subber (outS, aS, bS);
+shiftRight shiftRighter (out0, a0, b0);
+shiftLeft shiftLefter (out0, a0, b0);
+slt slter (out0, a0, b0);
+Adder32Bit adder (out0, carry0, a0, b0);
+Sub32Bit subber (out0, a0, b0);
 
 	always @ (a,b) begin
 		case (ctrl)
