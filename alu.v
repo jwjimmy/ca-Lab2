@@ -5,16 +5,22 @@ module alu (
 	output zero, ovf, carry
 	);
 
+
+shiftRight shiftRighter (out, a, b);
+shiftLeft shiftLefter (out, a, b);
+slt slter (out, a, b);
+Add32Bit adder (out, carry, a, b);
+Sub32Bit subber (out, a, b);
+
 	always @ (busA, busB) begin
 		case (ctrl)
-			3'b000: #320 assign out = busA + busB; // add
-			3'b001: #320 assign out = busA - busB; // subtract - sign then add
-			3'b010: #20 assign out = busA ^ busB; // xor - build via 32 parallel bitwise two-input xor gates
-			3'b011: #640 assign out = (busA < busB); // set if less than - build off of subtraction & look at 31st bit
-			3'b100: #10000 assign out = busA*busB; // multiply
-			3'b101: #150 assign out = busA << busB; // leftshift - use "for" loop and shift by one each time?
-			3'b110: #150 assign out = busA >> busB; // rightshift
-			3'b111: #250 assign out = busA >>> busB; // arithmatic (sign extended) rightshift - clock in 1s, instead of zeroes
+			3'b000: adder (out, carry, a, b); // add
+			3'b001: subber (out, a, b); // subtract
+			3'b010: #20 out = a ^ b; // xor - built via 32 parallel bitwise two-input xor gates
+			3'b011: slter (out, a, b); // set if less than
+			3'b101: shiftLefter (out, a, b); // <<
+			3'b110: shiftRighter (out, a, b); // >>
+			default: assign out = 32'b0;
 		endcase
 	end
 endmodule
