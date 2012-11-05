@@ -9,7 +9,7 @@ module alu (
 		case (ctrl)
 			3'b000: #320 assign out = busA + busB; // add
 			3'b001: #320 assign out = busA - busB; // subtract - sign then add
-			3'b010: #320 assign out = busA ^ busB; // xor - build via bitwise xor gates
+			3'b010: #20 assign out = busA ^ busB; // xor - build via 32 parallel bitwise two-input xor gates
 			3'b011: #640 assign out = (busA < busB); // set if less than - build off of subtraction & look at 31st bit
 			3'b100: #10000 assign out = busA*busB; // multiply
 			3'b101: #150 assign out = busA << busB; // leftshift - use "for" loop and shift by one each time?
