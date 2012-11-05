@@ -1,7 +1,12 @@
 /*
-This module is constructed out of a single 32b wide shift register with a counter (fed with inB) as a clock generator.
+This module was constructed out of a single 32b wide shift register with a counter (fed with inB) as a clock generator.
 
-While slower than a mux/mux shifter, this is considerably smaller, and much easier to implement.
+While slower than a mux/mux shifter, this was considerably smaller, and much easier to implement.
+
+This module was then constructed out of a series of if statements, but the synthesis was semantically ambiguous.
+
+This module was finally constructed out of a series of muxes and wires, providing a sane prop. delay with well-defined behavior.
+
 */
 
 
@@ -11,14 +16,16 @@ module shift(
 	input [31:0] inA, inB
 	);
 
-	reg [31:0] level0, level1, level2, level3, level4; // create 32b vars
+	reg [31:0] temp; // use one temporary state variable to shave off a few dozen flipflops.
+
+	// thirty-two parallel two-input muxes has a timing equivalent to that of approximately one two-input AND gate and a two-input OR gate, AKA 40u 
 
 	always @ (inA, inB) begin
-		level0 = (inB&5'b00001) ? (inA << 1) : inA;
-		level1 = (inB&5'b00010) ? (level0 << 2) : level0;
-		level2 = (inB&5'b00100) ? (level1 << 4) : level1;
-		level3 = (inB&5'b01000) ? (level2 << 8) : level2;
-		level4 = (inB&5'b10000) ? (level3 << 16) : level3;
-		out = level4;
+		#40 temp = (inB&5'b00001) ? (inA << 1) : inA; // if b0 of inB is 1, shift by 1, else don't shift
+		#40 temp = (inB&5'b00010) ? (temp << 2) : temp; // if b1 of inB is 1...
+		#40 temp = (inB&5'b00100) ? (temp << 4) : temp;
+		#40 temp = (inB&5'b01000) ? (temp << 8) : temp;
+		#40 temp = (inB&5'b10000) ? (temp << 16) : temp;
+		out = temp; // 'out' gets the value of 'temp'
 	end
 endmodule
