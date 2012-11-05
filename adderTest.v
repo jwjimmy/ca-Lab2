@@ -7,7 +7,7 @@ module test_adder;
 
 	initial
 	begin
-		$monitor($time, , Tout, , Tcout, , Ta , ,Tb);
+		$monitorh($time, , Tout, , Tcout, , Ta , ,Tb);
 		$dumpfile("testadder.vcd");
 		$dumpvars(0,test_adder);
 

@@ -7,11 +7,11 @@ module Adder1Bit(
 	);
     wire xorab, andcinx, andab;
 
-	xor one(xorab,a,b);
-	xor two(out,xorab,cin);
-	and three(andcinx,xorab,cin);
-	and four(andab,a,b);
-	or five(temp,andcinx,andab);
+	xor #20 one(xorab,a,b);
+	xor #20 two(out,xorab,cin);
+	and #20 three(andcinx,xorab,cin);
+	and #20 four(andab,a,b);
+	or #20 five(temp,andcinx,andab);
 endmodule
 
 module Adder32Bit(
@@ -53,6 +53,6 @@ module Adder32Bit(
 	Adder1Bit bit29(out[29],temp[29],a[29],b[29],temp[28]);
 	Adder1Bit bit30(out[30],temp[30],a[30],b[30],temp[29]);
 	Adder1Bit bit31(out[31],temp[31],a[31],b[31],temp[30]);
-	and(cout,temp[31],1'b1);
+	and #20 (cout,temp[31],1'b1);
 endmodule
 
