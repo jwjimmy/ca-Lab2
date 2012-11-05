@@ -4,11 +4,16 @@ module test_sign;
 
     initial
     begin
+        $dumpfile("testsign.vcd");
+        $dumpvars(0,test_sign);
+        $monitor($time, , Tout, , Tin);
         Tin = 32'b1000;
-        #10 Tin = 32'b1001;
+        #1000;
+        Tin = 32'b1001;
+        #1000;
+        Tin = 32'b0000;
+        #1000;
     end
 
-    sign tester (Tout,Tin);
-    initial
-        $monitor($time, , Tout, , Tin);
+    Sign32Bit tester (Tout,Tin);
 endmodule    
