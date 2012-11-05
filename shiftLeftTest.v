@@ -9,11 +9,11 @@ module shiftLeftTest;
 		$monitor($time, , Tout, , TinA, ,TinB);
 		TinA = 32'b1;
 		TinB = 32'd2;
-		#100; 
+		#500; 
 		TinB = 32'd4;
-		#100;
+		#500;
 		TinB = 32'd8;
-		#100;
+		#500;
 	end
 	shiftLeft shiftLeftTester (Tout,TinA, TinB);
 endmodule	
