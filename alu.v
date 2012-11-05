@@ -9,7 +9,7 @@ module alu (
 shiftRight shiftRighter (out, a, b);
 shiftLeft shiftLefter (out, a, b);
 slt slter (out, a, b);
-Add32Bit adder (out, carry, a, b);
+Adder32Bit adder (out, carry, a, b);
 Sub32Bit subber (out, a, b);
 
 	always @ (busA, busB) begin
