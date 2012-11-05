@@ -1,4 +1,4 @@
-module test_adder;
+module adderTest;
 	
 	//initialize input and output variables
 	reg[31:0] Ta, Tb;
@@ -9,17 +9,17 @@ module test_adder;
 	begin
 		$monitorh($time, , Tout, , Tcout, , Ta , ,Tb);
 		$dumpfile("testadder.vcd");
-		$dumpvars(0,test_adder);
+		$dumpvars(0,adderTest);
 
 		Ta = 32'b1000;
 		Tb = 32'b1001;
-		#1000;
+		#500;
 		Ta = 32'b1011;
 		Tb = 32'b0001;
-		#1000;
+		#500;
 		Ta = 32'b1011;
 		Tb = 32'b1111;
-		#1000;
+		#500;
 	end
 
 	Adder32Bit tester (Tout, Tcout, Ta, Tb);

@@ -12,13 +12,13 @@ module sltTest;
 
 		Ta = 1; 
 		Tb = 2;
-		#1000;
+		#2000;
 		Ta = 4;
 		Tb = 3;
-		#1000;
+		#2000;
 		Ta = 5;
 		Tb = 6;
-		#1000;
+		#2000;
 	end
 
 	slt sltTester (Tout, Ta, Tb);

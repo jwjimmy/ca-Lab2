@@ -4,7 +4,6 @@ module slt (
 	output wire [31:0] out, 
 	input wire [31:0] a, b
 	);
-
 	wire [31:0] tmp;
 
 	Sub32Bit subcontractor (tmp, a, b); // subtract b from a, use 'tmp' to move the result

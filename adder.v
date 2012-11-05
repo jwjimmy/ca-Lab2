@@ -55,4 +55,3 @@ module Adder32Bit(
 	Adder1Bit bit31(out[31],temp[31],a[31],b[31],temp[30]);
 	and #20 (cout,temp[31],1'b1);
 endmodule
-
