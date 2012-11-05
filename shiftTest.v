@@ -2,15 +2,9 @@ module test_shift;
 	reg [31:0] TinA, TinB;
 	wire [31:0] Tout;
 
-    initial
-    begin
-        $dumpfile("testshift.vcd");
-        $dumpvars(0,test_shift);
-        $monitor($time, , Tout, , TinA, ,TinB);
-        TinA = 32'b1;
 	initial
 	begin
-		$dumpfile("testsign.vcd");
+		$dumpfile("testshift.vcd");
 		$dumpvars(0,test_shift);
 		$monitor($time, , Tout, , TinA, ,TinB);
 		TinA = 32'b1;
