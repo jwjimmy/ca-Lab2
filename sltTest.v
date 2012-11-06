@@ -19,6 +19,12 @@ module sltTest;
 		Ta = 5;
 		Tb = 6;
 		#2000;
+        Ta = 32'hffffffff;
+        Tb = 1;
+        #2000;
+        Ta = 32'hfffffffe;
+        Tb = 32'hffffffff;
+        #2000;
 	end
 
 	slt sltTester (Tout, Ta, Tb);

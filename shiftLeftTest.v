@@ -14,6 +14,9 @@ module shiftLeftTest;
 		#500;
 		TinB = 32'd8;
 		#500;
+        TinA = 32'hffffffff;
+        TinB = 1;
+        #500;
 	end
 	shiftLeft shiftLeftTester (Tout,TinA, TinB);
 endmodule	
