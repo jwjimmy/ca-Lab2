@@ -53,5 +53,5 @@ module Adder32Bit(
 	Adder1Bit bit29(out[29],temp[29],a[29],b[29],temp[28]);
 	Adder1Bit bit30(out[30],temp[30],a[30],b[30],temp[29]);
 	Adder1Bit bit31(out[31],temp[31],a[31],b[31],temp[30]);
-	and #20 (cout,temp[31],1'b1);
+	assign #20 cout = temp[31];
 endmodule
