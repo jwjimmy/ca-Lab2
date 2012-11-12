@@ -15,11 +15,10 @@ module adderTest;
 		Tb = 32'b1001;
 		#500;
 		Ta = 32'b1011;
+		#500;
+		Ta = 32'hffffffff;
 		Tb = 32'b0001;
-		#500;
-		Ta = 32'b1011;
-		Tb = 32'b1111;
-		#500;
+		#5000;
 	end
 
 	Adder32Bit tester (Tout, Tcout, Ta, Tb);
